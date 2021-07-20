@@ -13,10 +13,7 @@ const connection = require("./common/connection");
 const model = require('./models/index');
 const responses = require("./common/responses");
 const v1Routes = require("./v1/routes");
-const socket = require('./socket/index');
-let io = require('socket.io')(server, {cors: {origin: '*'},
-origins: "*" , allowEIO3 : true });
-socket(io);
+
 const aws = require("aws-sdk");
 const { Server } = require("http");
 // aws.config.update({
@@ -59,9 +56,7 @@ app.use((error, req, res, next) => {
 server.listen(process.env.PORT, async () => {
     console.log(`Environment:`, process.env.NODE_ENV);
     console.log(`Running on:`, process.env.PORT);
-    console.log('Start Socketinitialize');
-
-// cronJob.startCronJobs().then(console.log("cronJob.startCronJobs();"));
+  
 
     connection.mongodb();
 });
